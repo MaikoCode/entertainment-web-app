@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "salmon": "#FC4747",
+        "deep-dark": "#10141E",
+        "blue": "#5A698F",
+        "dark-blue": "#161D2F",
+        "white": "#FFFFFF",
+      },
+      fontFamily: {
+        "outfit": ["var(--font-outfit)", "sans-serif"],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
