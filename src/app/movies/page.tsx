@@ -1,4 +1,4 @@
 
 export default function Movie(){
-    return <h1>Movie</h1>
+    return <div>Movie</div>
 }

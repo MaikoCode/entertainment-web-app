@@ -2,7 +2,11 @@ import type { Metadata } from 'next'
 import { Outfit } from 'next/font/google'
 import './globals.css'
 
-// const inter = Inter({ subsets: ['latin'] })
+import NavBar from '@/components/NavBar'
+import SearchBar from '@/components/SearchBar'
+
+
+
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -23,8 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={inter.className}>{children}</body> */}
-      <body className={`${outfit.variable} bg-deep-dark text-white`}>
-        {children}
+      <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4`}>
+        <div className='flex flex-col lg:flex-row'>
+         
+            <NavBar />
+            <SearchBar />
+          <div>
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   )

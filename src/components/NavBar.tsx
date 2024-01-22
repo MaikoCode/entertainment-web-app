@@ -1,5 +1,9 @@
+"use client";
+
 import  Link  from "next/link";
 import  Image  from "next/image";
+import { usePathname } from "next/navigation";
+
 import movieIcon from "../assets/icon-nav-movies.svg"
 import saveIcon from "../assets/icon-nav-bookmark.svg"
 import avatarIcon from "../assets/image-avatar.png"
@@ -8,12 +12,26 @@ import seriesIcon from "../assets/icon-nav-tv-series.svg"
 import logoIcon from "../assets/logo.svg"
 
 
+import iconNavActive from "../assets/icon-nav-home_active.svg"
+import movieIconActive from "../assets/icon-nav-movies_active.svg"
+import seriesIconActive from "../assets/icon-nav-tv-series_active.svg"
+import saveIconActive from "../assets/icon-nav-bookmark_active.svg"
+
+
+
+
 
 export default function NavBar() {
 
-    return <nav className="bg-dark-blue flex justify-between items-center p-5">
+    const pathname = usePathname()
+
+    const isActive = (path: string) => pathname === path
+
+    return <nav className="bg-dark-blue flex justify-between items-center p-5 w-full
+    md:m-4 md:rounded-2xl lg:px-0 lg:w-[100px] lg:h-[500px] lg:flex-col 
+    lg:justify-normal">
         <ul>
-            <li>
+            <li className="lg:pb-[50px]">
                 <Link href="/">
                    <Image 
                    src={logoIcon}
@@ -24,38 +42,42 @@ export default function NavBar() {
         </ul>
 
 
-        <ul className="flex space-x-2">
+        <ul className="flex space-x-6 lg:flex-col lg:space-x-0 lg:space-y-6 lg:pb-[200px]">
         <li>
                 <Link href="/">
                    <Image 
-                   src={iconNav}
+                   src={isActive("/") ? iconNavActive : iconNav}
                    alt="icon"
+                   className="h-[20px] w-[20px]"
                    />
                 </Link>
             </li>
         <li>
-                <Link href="/">
+                <Link href="/movies">
                    <Image 
-                   src={movieIcon}
+                   src={isActive("/movies") ? movieIconActive : movieIcon}
                    alt="icon"
+                   className="h-[20px] w-[20px]"
                    />
                 </Link>
             </li>
 
             <li>
-                <Link href="/">
+                <Link href="/series">
                    <Image 
-                   src={seriesIcon}
+                   src={isActive("/series") ? seriesIconActive : seriesIcon}
                    alt="icon"
+                   className="h-[20px] w-[20px]"
                    />
                 </Link>
             </li>
 
             <li>
-                <Link href="/">
+                <Link href="/saves">
                    <Image 
-                   src={saveIcon}
+                   src={isActive("/saves") ? saveIconActive : saveIcon}
                    alt="icon"
+                   className="h-[20px] w-[20px]"
                    />
                 </Link>
             </li>
@@ -68,7 +90,7 @@ export default function NavBar() {
                 <Image 
                 src={avatarIcon}
                 alt="icon"
-                className="h-8 w-8 rounded-full"
+                className="h-8 w-8 rounded-full border-2 border-white cursor-pointer"
                 />
         </span>
         
