@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={inter.className}>{children}</body> */}
-      <body className={`${outfit.variable} bg-dark-blue text-white`}>
+      <body className={`${outfit.variable} bg-deep-dark text-white`}>
         {children}
       </body>
     </html>
