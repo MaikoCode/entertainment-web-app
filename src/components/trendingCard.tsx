@@ -1,3 +1,7 @@
+
+"use client";
+import { useState, useEffect } from 'react';
+
 import Image from "next/image";
 import dataJson from "../assets/data.json"
 import iconSaveEmpty from "../assets/icon-bookmark-empty.svg"
@@ -34,23 +38,44 @@ interface TrendingCardProps {
 
 export default function TrendingCard(){
     const data = dataJson[0]
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    const getThumbnailSrc = () => {
+        const { small, medium, large } = data.thumbnail.trending as { small: string; medium?: string; large: string; } || {};
+        if (screenWidth < 640) return `/${small}`; 
+        if (screenWidth < 768) return `/${medium || small}`;
+        return `/${large}`;
+    };
+
     return <div className="relative w-[400px] h-[200px] group">
-                <Image
+                {/* <Image
                 fill
                 src={data?.thumbnail?.trending?.large ? `/${data.thumbnail.trending.large}` : ""}
                 alt="pic of the media"
                 className="absolute w-full h-full rounded-lg"
+                /> */}
+
+                <Image
+                fill
+                src={getThumbnailSrc()}
+                alt="pic of the media"
+                className="absolute w-full h-full rounded-lg"
                 />
 
-            
-                {/* <div className="absolute top-4 right-4 cursor-pointer
-                bg-dark-blue bg-opacity-55 p-4 rounded-full">
-
-                    <Image
-                    src={iconSaveEmpty} 
-                    alt="icon to save media"
-                    />
-                </div> */}
 
                 <div className="absolute top-4 right-4 cursor-pointer
                 bg-dark-blue bg-opacity-55 p-4 rounded-full z-10 hover:bg-white group/save">
