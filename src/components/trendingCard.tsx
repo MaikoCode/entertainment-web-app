@@ -62,18 +62,13 @@ export default function TrendingCard(){
     };
 
     return <div className="relative w-[400px] h-[200px] group">
-                {/* <Image
-                fill
-                src={data?.thumbnail?.trending?.large ? `/${data.thumbnail.trending.large}` : ""}
-                alt="pic of the media"
-                className="absolute w-full h-full rounded-lg"
-                /> */}
-
+               
                 <Image
                 fill
                 src={getThumbnailSrc()}
                 alt="pic of the media"
                 className="absolute w-full h-full rounded-lg"
+                priority={true}
                 />
 
 

@@ -26,7 +26,7 @@ export default function NavBar() {
     const pathname = usePathname()
 
     const isActive = (path: string) => pathname === path
-
+// At lg should divide the screen into 2 columns to avoid the shrinking of the icons
     return <nav className="bg-dark-blue flex justify-between items-center p-5 w-full
     md:m-4 md:rounded-2xl lg:px-0 lg:w-[100px] lg:h-[500px] lg:flex-col 
     lg:justify-normal">
@@ -41,6 +41,8 @@ export default function NavBar() {
             </li>
         </ul>
 
+       
+
 
         <ul className="flex space-x-6 lg:flex-col lg:space-x-0 lg:space-y-6 lg:pb-[200px]">
         <li>
@@ -52,12 +54,23 @@ export default function NavBar() {
                    />
                 </Link>
             </li>
-        <li>
+
+        {/* <li>
                 <Link href="/movies">
                    <Image 
                    src={isActive("/movies") ? movieIconActive : movieIcon}
                    alt="icon"
                    className="h-[20px] w-[20px]"
+                   />
+                </Link>
+            </li> */}
+
+            <li>
+                <Link href="/movies">
+                   <Image 
+                   src={movieIcon}
+                   alt="icon"
+                   className="fill-red-500"
                    />
                 </Link>
             </li>

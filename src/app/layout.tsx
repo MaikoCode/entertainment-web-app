@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='scroll-smooth focus:scroll-auto'>
       {/* <body className={inter.className}>{children}</body> */}
       <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4`}>
         <div className='flex flex-col lg:flex-row'>
@@ -33,7 +33,11 @@ export default function RootLayout({
             <NavBar />
             <SearchBar />
           <div>
+         
+  
+
             {children}
+
           </div>
         </div>
       </body>
