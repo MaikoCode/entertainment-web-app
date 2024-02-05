@@ -6,8 +6,6 @@ import NavBar from '@/components/NavBar'
 import SearchBar from '@/components/SearchBar'
 
 
-
-
 const outfit = Outfit({
   subsets: ['latin'],
   weight: ["300", "500"],
@@ -28,7 +26,7 @@ export default function RootLayout({
     <html lang="en" className='scroll-smooth focus:scroll-auto'>
       {/* <body className={inter.className}>{children}</body> */}
       <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4`}>
-        <div className='flex flex-col lg:flex-row'>
+        <div className='flex flex-col lg:flex-row overflow-x-hidden overflow-y-auto hide-scrollbar'>
          
             <NavBar />
             <SearchBar />

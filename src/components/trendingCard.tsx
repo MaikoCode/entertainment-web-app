@@ -36,8 +36,8 @@ interface TrendingCardProps {
     data: Movie;
 }
 
-export default function TrendingCard(){
-    const data = dataJson[0]
+export default function TrendingCard({data}: {data: Movie}){
+    // const data = dataJson[0]
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
 
@@ -61,7 +61,7 @@ export default function TrendingCard(){
         return `/${large}`;
     };
 
-    return <div className="relative w-[400px] h-[200px] group">
+    return <div className="relative w-[250px] h-[150px] lg:w-[400px] lg:h-[200px] group">
                
                 <Image
                 fill
