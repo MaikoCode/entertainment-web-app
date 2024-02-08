@@ -61,7 +61,7 @@ export default function RegularCard({data}: {data: Movie}){
         return `/${large}`;
     };
 
-    return <div className="relative  w-[200px] h-[150px] lg:w-[280px] lg:h-[174px] group">
+    return <div className="relative w-[160px] h-[120px]  md:w-[200px] md:h-[150px] lg:w-[260px] lg:h-[174px] group mt-4">
                
                 <Image
                 fill
@@ -81,7 +81,7 @@ export default function RegularCard({data}: {data: Movie}){
                     />
                 </div>
 
-                <div className="absolute -bottom-16 left-0 w-[200px]">
+                <div className="absolute -bottom-16 text-sm md:text-base left-0 w-[160px] w-[200px]">
                     <div className="text-white">
                         <ul className="flex justify-between  list-disc">
                             <li className="list-none">{data?.year}</li>
@@ -106,7 +106,7 @@ export default function RegularCard({data}: {data: Movie}){
                             <li>{data?.rating}</li>
                         </ul>
                         <div>
-                            <span className="font-bold text-xl">{data?.title}</span>
+                            <span className="font-bold text-base md:text-xl">{data?.title}</span>
                         </div> 
                     </div>
                 </div>

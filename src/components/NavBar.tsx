@@ -27,8 +27,8 @@ export default function NavBar() {
 
     const isActive = (path: string) => pathname === path
 // At lg should divide the screen into 2 columns to avoid the shrinking of the icons
-    return <nav className="bg-dark-blue flex justify-between items-center p-5 w-full
-    md:m-4 md:rounded-2xl lg:px-0 lg:w-[100px] lg:h-[500px] lg:flex-col 
+    return <nav className="bg-dark-blue lg:fixed flex justify-between items-center p-5 w-full
+    md:w-auto md:m-4 md:rounded-2xl lg:px-0 lg:w-[75px] lg:h-[500px] lg:flex-col 
     lg:justify-normal">
         <ul>
             <li className="lg:pb-[50px]">

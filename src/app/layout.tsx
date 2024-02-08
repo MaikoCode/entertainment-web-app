@@ -23,19 +23,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='scroll-smooth focus:scroll-auto'>
+    <html lang="en" className='scroll-smooth'>
       {/* <body className={inter.className}>{children}</body> */}
-      <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4`}>
-        <div className='flex flex-col lg:flex-row overflow-x-hidden overflow-y-auto hide-scrollbar'>
-         
-            <NavBar />
-            <SearchBar />
+      <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4 w-full min-h-screen`}>
+        <div className='flex flex-col lg:flex-row overflow-x-hidden'>
+            <div className='lg:w-[9%]'>
+              <NavBar />
+            </div>
           <div>
-         
-  
-
+            <SearchBar />
             {children}
-
           </div>
         </div>
       </body>
