@@ -45,7 +45,7 @@ export default function Saves() {
       </div>
 
     
-      <h2 className="text-2xl mt-[12vh] py-4">Bookmarked TV Series</h2>
+      <h2 className="text-3xl mt-[12vh] py-4">Bookmarked TV Series</h2>
 
       <div className="grid grid-cols-2 tablet:grid-cols-3 lg:grid-cols-4 gap-x-1 md:gap-x-0 gap-y-16">
         {saved.filter(item => item.category === "TV Series").map((item, index) => (
