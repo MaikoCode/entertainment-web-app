@@ -1,6 +1,8 @@
+"use client";
 import TrendingCard from "@/components/trendingCard"
 import RegularCard from "@/components/regularCard"
 import dataJson from "@/assets/data.json"
+import localStorageUtils from "./utils/localStorageUtils"
 
 
 export default function HomePage() { 
@@ -16,7 +18,7 @@ export default function HomePage() {
       {dataJson.map((item, index) => (
           item.isTrending && (
             <div className="min-w-max" key={index}>
-              <TrendingCard data={item} />
+              <TrendingCard data={item} toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
             </div>
           )
         ))}
@@ -34,7 +36,7 @@ export default function HomePage() {
           !item.isTrending && (
            
           <div key={index} className="flex justify-center items-center">
-            <RegularCard data={item} />
+            <RegularCard data={item} toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
           </div>
            
           )

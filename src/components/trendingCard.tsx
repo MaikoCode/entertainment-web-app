@@ -3,12 +3,12 @@
 import { useState, useEffect } from 'react';
 
 import Image from "next/image";
-import dataJson from "../assets/data.json"
 import iconSaveEmpty from "../assets/icon-bookmark-empty.svg"
 import iconSaveFull from "../assets/icon-bookmark-full.svg"
 import iconSeries from "../assets/icon-category-tv.svg"
 import iconMovies from "../assets/icon-category-movie.svg"
 import iconPlay from "../assets/icon-play.svg"
+import localStorageUtils from '@/app/utils/localStorageUtils';
 
 
 interface ThumbnailSizes {
@@ -36,9 +36,21 @@ interface TrendingCardProps {
     data: Movie;
 }
 
-export default function TrendingCard({data}: {data: Movie}){
+export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, toggleSaveMovie: (movie: Movie) => void}){
     // const data = dataJson[0]
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [isBookmarked, setIsBookmarked] = useState(localStorageUtils.isMovieSaved(data))
+
+
+    const handleBookmarkClick = () => {
+        localStorageUtils.toggleSaveMovie(data);
+        setIsBookmarked(localStorageUtils.isMovieSaved(data))
+    }
+
+    useEffect(() => {
+        setIsBookmarked(localStorageUtils.isMovieSaved(data));
+      }, [data]);
+
 
 
     useEffect(() => {
@@ -73,9 +85,11 @@ export default function TrendingCard({data}: {data: Movie}){
 
 
                 <div className="absolute top-4 right-4 cursor-pointer
-                bg-dark-blue bg-opacity-55 p-4 rounded-full z-10 hover:bg-white group/save">
+                bg-dark-blue bg-opacity-55 p-4 rounded-full z-10 hover:bg-white group/save"
+                onClick={handleBookmarkClick}
+                >
                     <Image
-                    src={iconSaveEmpty} 
+                    src={localStorageUtils.isMovieSaved(data) ? iconSaveFull : iconSaveEmpty}
                     alt="icon to save media"
                     className="group-hover/save:invert"
                     />
