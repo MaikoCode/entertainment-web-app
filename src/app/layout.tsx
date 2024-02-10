@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className='scroll-smooth'>
       {/* <body className={inter.className}>{children}</body> */}
-      <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4 w-full min-h-screen`}>
+      <body className={`${outfit.variable} bg-deep-dark text-white lg:p-4 w-full min-h-screen container mx-auto`}>
         <div className='flex flex-col lg:flex-row overflow-x-hidden'>
             <div className='lg:w-[9%]'>
               <NavBar />

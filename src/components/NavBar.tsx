@@ -55,7 +55,7 @@ export default function NavBar() {
                 </Link>
             </li>
 
-        {/* <li>
+        <li>
                 <Link href="/movies">
                    <Image 
                    src={isActive("/movies") ? movieIconActive : movieIcon}
@@ -63,9 +63,9 @@ export default function NavBar() {
                    className="h-[20px] w-[20px]"
                    />
                 </Link>
-            </li> */}
+            </li>
 
-            <li>
+            {/* <li>
                 <Link href="/movies">
                    <Image 
                    src={movieIcon}
@@ -73,7 +73,7 @@ export default function NavBar() {
                    className="fill-red-500"
                    />
                 </Link>
-            </li>
+            </li> */}
 
             <li>
                 <Link href="/series">
