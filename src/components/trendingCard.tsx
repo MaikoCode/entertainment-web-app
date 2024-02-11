@@ -1,6 +1,6 @@
 
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 import Image from "next/image";
 import iconSaveEmpty from "../assets/icon-bookmark-empty.svg"
@@ -8,7 +8,10 @@ import iconSaveFull from "../assets/icon-bookmark-full.svg"
 import iconSeries from "../assets/icon-category-tv.svg"
 import iconMovies from "../assets/icon-category-movie.svg"
 import iconPlay from "../assets/icon-play.svg"
-import localStorageUtils from '@/app/utils/localStorageUtils';
+// import localStorageUtils from '@/utils/localStorageUtils';
+// import localStorageUtils from '../utils/localStorageUtils';
+import localStorageUtils from '../utils/localStorageUtils2';
+
 
 
 interface ThumbnailSizes {
@@ -38,18 +41,24 @@ interface TrendingCardProps {
 
 export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, toggleSaveMovie: (movie: Movie) => void}){
     // const data = dataJson[0]
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    // const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [screenWidth, setScreenWidth] = useState(0);
     const [isBookmarked, setIsBookmarked] = useState(localStorageUtils.isMovieSaved(data))
 
 
     const handleBookmarkClick = () => {
-        localStorageUtils.toggleSaveMovie(data);
+        toggleSaveMovie(data);
         setIsBookmarked(localStorageUtils.isMovieSaved(data))
     }
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     setIsBookmarked(localStorageUtils.isMovieSaved(data));
+    //   }, [data]);
+
+      useLayoutEffect(() => {
+        // This will run as soon as possible in client-side rendering
         setIsBookmarked(localStorageUtils.isMovieSaved(data));
-      }, [data]);
+      }, [data]); // Re-run if data changes
 
 
 
@@ -57,6 +66,8 @@ export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, togg
         const handleResize = () => {
             setScreenWidth(window.innerWidth);
         };
+
+        handleResize();
 
         window.addEventListener('resize', handleResize);
 
@@ -90,6 +101,7 @@ export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, togg
                 >
                     <Image
                     src={localStorageUtils.isMovieSaved(data) ? iconSaveFull : iconSaveEmpty}
+                    // src={isBookmarked ? iconSaveFull : iconSaveEmpty}
                     alt="icon to save media"
                     className="group-hover/save:invert"
                     />

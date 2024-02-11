@@ -2,7 +2,29 @@
 import TrendingCard from "@/components/trendingCard"
 import RegularCard from "@/components/regularCard"
 import dataJson from "@/assets/data.json"
-import localStorageUtils from "./utils/localStorageUtils"
+// import localStorageUtils from "../utils/localStorageUtils"
+import localStorageUtils from '../utils/localStorageUtils2';
+
+interface ThumbnailSizes {
+  small: string;
+  medium?: string;
+  large: string;
+}
+
+interface Thumbnail {
+  trending?: ThumbnailSizes;
+  regular: ThumbnailSizes;
+}
+
+interface MovieProps {
+  title: string;
+  thumbnail: Thumbnail;
+  year: number;
+  category: string;
+  rating: string;
+  isBookmarked: boolean;
+  isTrending: boolean;
+}
 
 
 export default function HomePage() { 
@@ -15,10 +37,10 @@ export default function HomePage() {
      
 
       <div className="flex overflow-x-auto gap-4 hide-scrollbar horizontal-scroll-container">
-      {dataJson.map((item, index) => (
+      {dataJson.map((item: MovieProps, index: number) => (
           item.isTrending && (
             <div className="min-w-max" key={index}>
-              <TrendingCard data={item} toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
+              <TrendingCard data={{...item, thumbnail: { ...item.thumbnail, trending: item.thumbnail?.trending || { small: "", medium: "", large: "" } }}} toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
             </div>
           )
         ))}
@@ -36,7 +58,14 @@ export default function HomePage() {
           !item.isTrending && (
            
           <div key={index} className="flex justify-center items-center">
-            <RegularCard data={item} toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
+            <RegularCard data={{
+                        ...item,
+                        thumbnail: {
+                            ...item.thumbnail,
+                            trending: item.thumbnail.trending || { small: "", large: "" }
+                        }
+                    }}
+             toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
           </div>
            
           )

@@ -8,7 +8,8 @@ import iconSaveFull from "../assets/icon-bookmark-full.svg"
 import iconSeries from "../assets/icon-category-tv.svg"
 import iconMovies from "../assets/icon-category-movie.svg"
 import iconPlay from "../assets/icon-play.svg"
-import localStorageUtils from '@/app/utils/localStorageUtils';
+// import localStorageUtils from '@/utils/localStorageUtils';
+import localStorageUtils from '../utils/localStorageUtils2';
 
 
 interface ThumbnailSizes {
@@ -36,14 +37,18 @@ interface TrendingCardProps {
     data: Movie;
 }
 
+
+
 export default function RegularCard({data, toggleSaveMovie}: {data: Movie, toggleSaveMovie: (movie: Movie) => void}){
-    
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+ 
+    // const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [screenWidth, setScreenWidth] = useState(0);
     const [isBookmarked, setIsBookmarked] = useState(localStorageUtils.isMovieSaved(data))
 
 
     const handleBookmarkClick = () => {
-        localStorageUtils.toggleSaveMovie(data);
+        toggleSaveMovie(data);
+        // To reviews 
         setIsBookmarked(localStorageUtils.isMovieSaved(data))
     }
 
@@ -53,9 +58,13 @@ export default function RegularCard({data, toggleSaveMovie}: {data: Movie, toggl
 
 
     useEffect(() => {
+
+        
         const handleResize = () => {
             setScreenWidth(window.innerWidth);
         };
+
+        handleResize();
 
         window.addEventListener('resize', handleResize);
 
@@ -89,6 +98,7 @@ export default function RegularCard({data, toggleSaveMovie}: {data: Movie, toggl
                 >
                     <Image
                     src={localStorageUtils.isMovieSaved(data) ? iconSaveFull : iconSaveEmpty}
+                    // src={isBookmarked ? iconSaveFull : iconSaveEmpty}
                     alt="icon to save media"
                     className="group-hover/save:invert"
                     />

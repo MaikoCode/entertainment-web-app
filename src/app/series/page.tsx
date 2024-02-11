@@ -1,7 +1,8 @@
 "use client";
 import dataJson from "@/assets/data.json"
 import RegularCard from "@/components/regularCard"
-import localStorageUtils from "../utils/localStorageUtils"
+// import localStorageUtils from "../../utils/localStorageUtils"
+import localStorageUtils from '../../utils/localStorageUtils2';
 
 export default function Series(){
     return <div className="overflow-x-hidden mx-4 lg:w-full max-w-[69rem] hide-scrollbar">
@@ -13,7 +14,14 @@ export default function Series(){
       {dataJson.map((item, index) => (
         item.category === "TV Series" && (
         <div key={index} className="flex justify-center items-center">
-          <RegularCard data={item} toggleSaveMovie={localStorageUtils.toggleSaveMovie} />
+          <RegularCard data={{
+                        ...item,
+                        thumbnail: {
+                            ...item.thumbnail,
+                            trending: item.thumbnail.trending || { small: "", large: "" }
+                        }
+                    }}
+          toggleSaveMovie={localStorageUtils.toggleSaveMovie} />
         </div>
         )
       ))}
