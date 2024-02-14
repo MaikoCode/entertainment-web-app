@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import TrendingCard from "@/components/trendingCard"
 import RegularCard from "@/components/regularCard"
-import dataJson from "@/assets/data.json"
+import dataJson from "../assets/data.json"
+
 // import localStorageUtils from "../utils/localStorageUtils"
 import localStorageUtils from '../utils/localStorageUtils';
 

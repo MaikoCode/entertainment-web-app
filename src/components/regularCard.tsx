@@ -84,6 +84,7 @@ export default function RegularCard({data, toggleSaveMovie}: {data: Movie, toggl
     return <div className="relative w-[160px] h-[120px]  md:w-[200px] md:h-[150px] lg:w-[260px] lg:h-[174px] group mt-4">
                
                 <Image
+                fill
                 src={getThumbnailSrc()}
                 alt="pic of the media"
                 className="absolute w-full h-full rounded-lg"
