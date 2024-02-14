@@ -76,8 +76,8 @@ export default function RegularCard({data, toggleSaveMovie}: {data: Movie, toggl
 
     const getThumbnailSrc = () => {
         const { small, medium, large } = data.thumbnail.regular as { small: string; medium?: string; large: string; } || {};
-        if (screenWidth < 640) return `/${small}`; 
-        if (screenWidth < 768) return `/${medium || small}`;
+        if (screenWidth < 640) return `images/${small}`; 
+        if (screenWidth < 768) return `images/${medium || small}`;
         return `/${large}`;
     };
 
