@@ -2,7 +2,7 @@
 import dataJson from "@/assets/data.json"
 import RegularCard from "@/components/regularCard"
 // import localStorageUtils from "../../utils/localStorageUtils"
-import localStorageUtils from '../../utils/localStorageUtils2';
+import localStorageUtils from '../../utils/localStorageUtils';
 
 export default function Series(){
     return <div className="overflow-x-hidden mx-4 lg:w-full max-w-[69rem] hide-scrollbar">

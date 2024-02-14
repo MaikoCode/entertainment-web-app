@@ -1,9 +1,10 @@
 "use client";
+import { useState, useEffect } from 'react';
 import TrendingCard from "@/components/trendingCard"
 import RegularCard from "@/components/regularCard"
 import dataJson from "@/assets/data.json"
 // import localStorageUtils from "../utils/localStorageUtils"
-import localStorageUtils from '../utils/localStorageUtils2';
+import localStorageUtils from '../utils/localStorageUtils';
 
 interface ThumbnailSizes {
   small: string;
@@ -28,6 +29,11 @@ interface MovieProps {
 
 
 export default function HomePage() { 
+  const [isClientSide, setIsClientSide] = useState(false);
+  useEffect(() => {
+    // This will immediately set isClientSide to true on client-side environment
+    setIsClientSide(typeof window !== "undefined");
+  }, []);
   return (
     <div className="overflow-x-hidden mx-4 lg:w-full max-w-[69rem] hide-scrollbar">
     
@@ -37,7 +43,7 @@ export default function HomePage() {
      
 
       <div className="flex overflow-x-auto gap-4 hide-scrollbar horizontal-scroll-container">
-      {dataJson.map((item: MovieProps, index: number) => (
+      {isClientSide && dataJson.map((item: MovieProps, index: number) => (
           item.isTrending && (
             <div className="min-w-max" key={index}>
               <TrendingCard data={{...item, thumbnail: { ...item.thumbnail, trending: item.thumbnail?.trending || { small: "", medium: "", large: "" } }}} toggleSaveMovie={localStorageUtils.toggleSaveMovie}/>
@@ -54,7 +60,7 @@ export default function HomePage() {
       <h2 className="text-2xl py-4">Recommended for you</h2>
       <div className="grid grid-cols-2 tablet:grid-cols-3 lg:grid-cols-4 gap-x-1 md:gap-x-0 gap-y-16
       ">
-        {dataJson.map((item, index) => (
+        {isClientSide && dataJson.map((item, index) => (
           !item.isTrending && (
            
           <div key={index} className="flex justify-center items-center">

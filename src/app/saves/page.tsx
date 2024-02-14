@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Key } from 'react';
 import RegularCard from '@/components/regularCard';
 // import localStorageUtils from '../../utils/localStorageUtils';
-import localStorageUtils from '../../utils/localStorageUtils2';
+import localStorageUtils from '../../utils/localStorageUtils';
 
 export default function Saves() {
   const [saved, setSaved] = useState<any[]>([]);

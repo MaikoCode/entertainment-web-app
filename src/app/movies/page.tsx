@@ -2,7 +2,7 @@
 import dataJson from "@/assets/data.json"
 import RegularCard from "@/components/regularCard"
 // import localStorageUtils from "../../utils/localStorageUtils"
-import localStorageUtils from '../../utils/localStorageUtils2';
+import localStorageUtils from '../../utils/localStorageUtils';
 
 interface ThumbnailSizes {
     small: string;

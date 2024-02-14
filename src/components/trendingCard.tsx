@@ -10,7 +10,7 @@ import iconMovies from "../assets/icon-category-movie.svg"
 import iconPlay from "../assets/icon-play.svg"
 // import localStorageUtils from '@/utils/localStorageUtils';
 // import localStorageUtils from '../utils/localStorageUtils';
-import localStorageUtils from '../utils/localStorageUtils2';
+import localStorageUtils from '../utils/localStorageUtils';
 
 
 
