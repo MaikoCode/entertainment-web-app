@@ -79,8 +79,8 @@ export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, togg
 
     const getThumbnailSrc = () => {
         const { small, medium, large } = data.thumbnail.trending as { small: string; medium?: string; large: string; } || {};
-        if (screenWidth < 640) return `./${small}`; 
-        if (screenWidth < 768) return `./${medium || small}`;
+        if (screenWidth < 640) return `public/${small}`; 
+        if (screenWidth < 768) return `public/${medium || small}`;
         return `/${large}`;
     };
 
