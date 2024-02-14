@@ -87,7 +87,6 @@ export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, togg
     return <div className="relative w-[250px] h-[150px] lg:w-[400px] lg:h-[200px] group">
                
                 <Image
-               
                 src={getThumbnailSrc()}
                 alt="pic of the media"
                 className="absolute w-full h-full rounded-lg"
