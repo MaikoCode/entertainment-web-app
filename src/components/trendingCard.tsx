@@ -12,6 +12,8 @@ import iconPlay from "../assets/icon-play.svg"
 // import localStorageUtils from '../utils/localStorageUtils';
 import localStorageUtils from '../utils/localStorageUtils';
 
+import Test from "../assets/thumbnails/112/regular/medium.jpg"
+
 
 
 interface ThumbnailSizes {
@@ -79,21 +81,31 @@ export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, togg
 
     const getThumbnailSrc = () => {
         const { small, medium, large } = data.thumbnail.trending as { small: string; medium?: string; large: string; } || {};
-        if (screenWidth < 640) return `images/${small}`; 
-        if (screenWidth < 768) return `images/${medium || small}`;
+        if (screenWidth < 640) return `/${small}`; 
+        if (screenWidth < 768) return `/${medium || small}`;
         return `/${large}`;
     };
+
+
+    // const getThumbnailSrc = () => {
+    //     return `/./${Test}`;
+    // };
 
     return <div className="relative w-[250px] h-[150px] lg:w-[400px] lg:h-[200px] group">
                
                 <Image
                 fill
                 src={getThumbnailSrc()}
+                // src={Test}
                 alt="pic of the media"
                 className="absolute w-full h-full rounded-lg"
                 priority={true}
                 />
 
+                {/* <img 
+                src={getThumbnailSrc()} 
+                className="absolute w-full h-full rounded-lg"
+                alt="icon" /> */}
 
                 <div className="absolute top-4 right-4 cursor-pointer
                 bg-dark-blue bg-opacity-55 p-4 rounded-full z-10 hover:bg-white group/save"
