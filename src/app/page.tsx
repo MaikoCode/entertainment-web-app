@@ -55,7 +55,7 @@ export default function HomePage() {
         {query.length === 0 ? (
           <>
             <h2 className="text-2xl py-4">Trending</h2>
-            <div className="flex overflow-x-auto gap-4 hide-scrollbar horizontal-scroll-container">
+            <div className="flex overflow-x-auto gap-4 hide-scrollbar horizontal-scroll-container h-full">
               {isClientSide && dataJson.map((item: MovieProps, index: number) => (
                 item.isTrending && (
                   <div className="min-w-max" key={index}>
@@ -85,11 +85,11 @@ export default function HomePage() {
         ) : (
           <div className="overflow-x-hidden mx-4 lg:w-full max-w-[69rem] hide-scrollbar">
           <p className='text-2xl text-left py-4'>Found {filteredMovies.length} results for '{query}'</p>
-          <div className="grid grid-cols-2 tablet:grid-cols-3 lg:grid-cols-4 gap-x-1 md:gap-x-0 gap-y-16">
+          <div className="grid grid-cols-2 tablet:grid-cols-3 lg:grid-cols-4 gap-x-1 md:gap-x-0 gap-y-16 h-full">
             
             {isClientSide && filteredMovies.map((item, index) => (
               (
-                <div key={index} className="flex justify-center items-center my-[5vh]">
+                <div key={index} className="flex justify-center items-center my-[7vh] lg:my-[10vh]">
                   <RegularCard data={{
                     ...item,
                     thumbnail: {

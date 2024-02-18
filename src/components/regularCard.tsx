@@ -104,30 +104,30 @@ export default function RegularCard({data, toggleSaveMovie}: {data: Movie, toggl
                     />
                 </div>
 
-                <div className="absolute -bottom-16 text-sm md:text-base left-0">
+                <div className="absolute -bottom-16 text-[13px] md:text-base left-0">
                     {/* w-[160px] w-[200px] */}
                     <div className="text-white">
                         <ul className="flex justify-between  list-disc">
-                            <li className="list-none">{data?.year}</li>
-                            <li className="">
+                            <li className="list-none mr-4 lg:mr-4">{data?.year}</li>
+                            <li className="ml-1 lg:ml-4">
                                 <div className="flex justify-between items-center">
                                     {data?.category === "Movie" ? (
                                             <Image
                                                 src={iconMovies}
                                                 alt="icon for movie"
-                                                className="h-4 w-4 mr-4"
+                                                className="h-3 w-3 md:h-4 md:w-4 mr-3 lg:mr-4"
                                             />
                                         ) : (
                                             <Image
                                                 src={iconSeries}
                                                 alt="icon for TV series"
-                                                className="h-4 w-4 mr-4"
+                                                className="h-3 w-3 md:h-4 md:w-4  mr-3 lg:mr-4"
                                             />
                                         )}
                                 {data?.category}
                                 </div>
                             </li>
-                            <li>{data?.rating}</li>
+                            <li className='ml-2 lg:ml-8'>{data?.rating}</li>
                         </ul>
                         <div>
                             <span className="font-bold text-base md:text-xl">{data?.title}</span>

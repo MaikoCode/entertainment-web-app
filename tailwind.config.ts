@@ -25,6 +25,7 @@ const config: Config = {
       },
       screens: {
         'tablet': '580px',
+        'lg': '1280px',
       },
     },
   },
