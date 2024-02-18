@@ -86,18 +86,18 @@ export default function TrendingCard({data, toggleSaveMovie}: {data: Movie, togg
     //     return `/${large}`;
     // };
 
-     const getThumbnailSrc = () => {
-        const { small, medium, large } = data.thumbnail.trending as { small: string; medium?: string; large: string; } || {};
-        if (screenWidth < 640) return small; 
-        if (screenWidth < 768) return medium || small;
-        return large;
-    };
-
-
-    // const getThumbnailSrc = () => {
-    //     // return '/' +  Test;
-    //     return `/${Test}`;
+    //  const getThumbnailSrc = () => {
+    //     const { small, medium, large } = data.thumbnail.trending as { small: string; medium?: string; large: string; } || {};
+    //     if (screenWidth < 640) return small; 
+    //     if (screenWidth < 768) return medium || small;
+    //     return large;
     // };
+
+
+    const getThumbnailSrc = () => {
+        // return '/' +  Test;
+        return Test;
+    };
 
     return <div className="relative w-[250px] h-[150px] lg:w-[400px] lg:h-[200px] group">
                
