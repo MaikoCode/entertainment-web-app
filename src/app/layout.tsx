@@ -31,7 +31,7 @@ export default function RootLayout({
               <NavBar />
             </div>
           <div>
-            <SearchBar />
+            {/* <SearchBar /> */}
             {children}
           </div>
         </div>

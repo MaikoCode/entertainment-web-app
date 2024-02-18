@@ -1,11 +1,25 @@
 import searcIcon from '../assets/icon-search.svg';
 import Image from 'next/image';
+import { useState } from 'react';
 
 
 
-export default function SearchBar() {
+export default function SearchBar({ onSearch }: { onSearch: (query: string) => void }){
 
-    return <form className='mt-4 mx-4 flex  w-full'>
+    const [searchQuery, setSearchQuery] = useState('')
+
+     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => { 
+        setSearchQuery(e.target.value);
+     }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        
+        onSearch(searchQuery);
+
+    }
+
+    return <form className='mt-4 mx-4 flex  w-full' onSubmit={handleSubmit}>
         <Image
         src={searcIcon}
         alt='icon search'
@@ -13,6 +27,8 @@ export default function SearchBar() {
         />
         <input type="text"
         placeholder='Search for movies or TV series'
+        value={searchQuery}
+        onChange={handleSearch}
         className='appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-4 leading-tight focus:outline-none
         placeholder:font-outfit lg:h-20 lg:'
          />
